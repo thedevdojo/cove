@@ -1,3 +1,8 @@
+@php
+    if(isset($seo)){
+        $seo = (is_array($seo)) ? ((object)$seo) : $seo;
+    }
+@endphp
 @if(isset($seo->title))
     <title>{{ $seo->title }}</title>
 @else
@@ -10,7 +15,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="url" content="{{ url('/') }}">
 
-<link rel="icon" href="{{ setting('site.favicon', '/wave/favicon.png') }}" type="image/x-icon">
+<x-favicon></x-favicon>
 
 {{-- Social Share Open Graph Meta Tags --}}
 @if(isset($seo->title) && isset($seo->description) && isset($seo->image))
@@ -37,8 +42,6 @@
 @if(isset($seo->description))
     <meta name="description" content="{{ $seo->description }}">
 @endif
-
-<!-- Styles -->
 
 @filamentStyles
 @vite(['resources/themes/cove/assets/css/app.css', 'resources/themes/cove/assets/js/app.js'])

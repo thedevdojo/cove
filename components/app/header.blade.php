@@ -20,7 +20,7 @@
 
             <div x-data="{ open: false }" class="flex h-full md:flex-1">
                 <nav class="hidden flex-1 space-x-8 h-full md:flex">
-                    <a href="{{ route('wave.dashboard') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none border-b-2 border-transparent @if(Request::is('dashboard')){{ 'border-b-2 border-indigo-500 text-zinc-900 focus:border-indigo-700' }}@else{{ 'text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 focus:text-zinc-700 focus:border-zinc-300' }}@endif">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none border-b-2 border-transparent @if(Request::is('dashboard')){{ 'border-b-2 border-indigo-500 text-zinc-900 focus:border-indigo-700' }}@else{{ 'text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 focus:text-zinc-700 focus:border-zinc-300' }}@endif">Dashboard</a>
                     <div x-data="{ dropdown: false }" @mouseenter="dropdown = true" @mouseleave="dropdown=false" @click.away="dropdown=false" class="inline-flex relative items-center px-1 pt-1 text-sm font-medium leading-5 border-b-2 border-transparent transition duration-150 ease-in-out cursor-pointer text-zinc-500 hover:text-zinc-700 hover:border-zinc-300 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">
                         <span>Resources</span>
                         <svg class="ml-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -53,7 +53,7 @@
                                                 Watch videos to learn how to use Wave.
                                             </p>
                                         </a>
-                                        <a href="{{ route('wave.blog') }}" class="block px-5 py-3 -m-3 space-y-1 rounded-xl transition duration-150 ease-in-out hover:bg-zinc-100">
+                                        <a href="{{ route('blog') }}" class="block px-5 py-3 -m-3 space-y-1 rounded-xl transition duration-150 ease-in-out hover:bg-zinc-100">
                                             <p class="text-base font-medium leading-6 text-zinc-900">
                                                 From The Blog
                                             </p>
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 border-b-2 border-transparent transition duration-150 ease-in-out text-zinc-500 hover:text-zinc-700 hover:border-zinc-300 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">Support</a>
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out text-zinc-500 hover:text-zinc-700 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">Support</a>
                 </nav>
 
 
@@ -78,7 +78,7 @@
                         </div>
                     @endif
 
-                    @include('theme::partials.notifications')
+                    {{-- @include('theme::partials.notifications') --}}
 
                     <!-- Profile dropdown -->
                     <div @click.away="open = false" class="flex relative items-center ml-3 h-full" x-data="{ open: false }">
@@ -149,7 +149,7 @@
             <div class="bg-white rounded-lg divide-y-0 shadow-xs divide-zinc-50">
                 <div class="px-8 pt-24 pb-8">
                     <nav class="grid row-gap-8">
-                        <a href="{{ route('wave.dashboard') }}" class="flex items-center p-3 -mx-2 space-x-3 rounded-md transition duration-150 ease-in-out hover:bg-zinc-50">
+                        <a href="{{ route('dashboard') }}" class="flex items-center p-3 -mx-2 space-x-3 rounded-md transition duration-150 ease-in-out hover:bg-zinc-50">
                             <svg class="flex-shrink-0 w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             <div class="text-base font-medium leading-6 text-zinc-900">
                                 Dashboard
@@ -167,7 +167,7 @@
                                 Videos
                             </div>
                         </a>
-                        <a href="{{ route('wave.blog') }}" class="flex items-center p-3 -mx-2 space-x-3 rounded-md transition duration-150 ease-in-out hover:bg-zinc-50">
+                        <a href="{{ route('blog') }}" class="flex items-center p-3 -mx-2 space-x-3 rounded-md transition duration-150 ease-in-out hover:bg-zinc-50">
                             <svg class="flex-shrink-0 w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
                             <div class="text-base font-medium leading-6 text-zinc-900">
                                 Blog
