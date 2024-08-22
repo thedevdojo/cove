@@ -1,10 +1,11 @@
 
-<section>
+<section class="pt-10 max-w-7xl mx-auto">
 
-    <div class="w-full text-left sm:text-center">
-                <h2 class="pt-12 text-4xl font-extrabold text-gray-900 lg:text-5xl">Example Pricing</h2>
-                <p class="w-full my-1 text-base text-left text-gray-900 opacity-75 sm:my-2 sm:text-center sm:text-xl">It's easy to customize the pricing of your Software as a Service</p>
-            </div>
+    <x-marketing.heading
+        title="Pricing Plans"
+        description="Everything you need to help you succeed. Simple transparent pricing to fit businesses of any size."
+        align="center"
+    />
 
     <div x-data="{ on: false, billing: 'Monthly', basic: {'Monthly' : '19', 'Yearly' : '180'}, pro: {'Monthly' : '49', 'Yearly' : '450' },
             toggleRepositionMarker(toggleButton){
@@ -22,7 +23,7 @@
                     }, 10); 
                 }, 1);
         "
-        class="mx-auto my-12 w-full max-w-6xl" x-cloak>
+        class="mx-auto my-12 w-full" x-cloak>
 
         <div class="flex relative justify-center items-center pb-5 -translate-y-2">
             <div class="inline-flex relative justify-center items-center p-1 mx-auto w-auto text-center rounded-full border-2 border-blue-600 -translate-y-3">

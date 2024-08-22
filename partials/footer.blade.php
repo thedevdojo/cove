@@ -200,7 +200,3 @@
         </div>
     </div>
 </footer>
-
-@if(!auth()->guest() && auth()->user()->hasChangelogNotifications())
-    @include('theme::partials.announcements')
-@endif

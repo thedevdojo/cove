@@ -12,6 +12,6 @@
         'text-right' => $align == 'right',
         'text-center' => $align != 'left' && $align != 'right'
     ]) }}>
-    <{{ $level }} class="text-4xl font-medium tracking-tighter lg:text-5xl text-balance">{!! $title!!}</{{ $level }}>
-    <p class="mt-4 text-base font-medium text-gray-500 text-balance @if($align == 'left'){{ 'ml-auto' }}@elseif($align == 'right'){{ 'mr-auto' }}@else{{ 'mx-auto max-w-2xl' }}@endif">{!! $description !!}</p>
+    <{{ $level }} class="text-4xl font-extrabold text-gray-900 lg:text-5xl">{!! $title!!}</{{ $level }}>
+    <p class="w-full my-1 text-base text-gray-900 opacity-75 sm:my-2 sm:text-xl">It's easy to customize the pricing of your Software as a Service</p>
 </div>

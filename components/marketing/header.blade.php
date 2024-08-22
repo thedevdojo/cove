@@ -42,7 +42,7 @@
                         }" class="relative z-10 w-auto"
                     >
                         <div class="relative">
-                            <ul class="flex flex-1 justify-center items-center p-1 list-none rounded-md text-zinc-500 group">
+                            <ul class="flex flex-1 justify-center items-center p-1 list-none rounded-md text-zinc-800 group">
                                 <li class="px-0.5" @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='platform'" @mouseleave="navigationMenuLeave()">
                                     <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='platform', 'hover:text-zinc-900' : navigationMenu!='platform' }" class="inline-flex justify-center items-center px-4 py-2 w-max h-10 text-sm font-medium rounded-full transition-colors focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
                                         <span>Platform</span>
@@ -140,16 +140,22 @@
 
             <div class="hidden relative z-30 flex-shrink-0 justify-center items-center space-x-3 h-full text-sm md:flex">
                 @if(auth()->guest())
-                    <a href="{{ route('login') }}" class="px-4 py-2 font-medium rounded-full text-zinc-500 hover:bg-zinc-100 whitespace-no-wrap hover:text-blue-600 focus:outline-none focus:text-zinc-900">
-                        Sign in
-                    </a>
-                    <a href="{{ route('register') }}" class="inline-flex justify-center items-center px-4 py-2 font-medium text-white bg-blue-500 rounded-md rounded-full border border-transparent shadow-sm transition duration-150 ease-in-out whitespace-no-wrap hover:bg-blue-600 focus:outline-none focus:border-indigo-700 focus:shadow-outline-wave active:bg-blue-700">
-                        Sign up
-                    </a>
+                    <div class="rounded-full overflow-hidden">
+                        <x-button href="{{ route('login') }}" tag="a" color="gray" size="md">
+                            Sign in
+                        </x-button>
+                    </div>
+                    <div class="rounded-full overflow-hidden">
+                        <x-button href="{{ route('register') }}" tag="a" color="info" size="md">
+                            Sign up
+                        </x-button>
+                    </div>
                 @else
-                    <a href="{{ route('dashboard') }}" class="inline-flex justify-center items-center px-4 py-2 font-medium text-white bg-blue-500 rounded-md rounded-full border border-transparent shadow-sm transition duration-150 ease-in-out whitespace-no-wrap hover:bg-blue-600 focus:outline-none focus:border-indigo-700 focus:shadow-outline-wave active:bg-blue-700">
-                        View Dashboard
-                    </a>
+                    <div class="rounded-full overflow-hidden">
+                        <x-button href="{{ route('dashboard') }}" tag="a" color="info" size="md">
+                            View Dashboard
+                        </x-button>
+                    </div>
                 @endif
             </div>
         </div>

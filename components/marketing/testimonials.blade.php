@@ -9,7 +9,11 @@
                         Testimonials
                     </h2>
                     <p class="pr-5 my-6 text-lg text-zinc-600 md:text-center lg:text-left">This is an example section of where you will add your testimonials for your Software as a Service.</p>
-                    <a href="#_" class="flex justify-center items-center px-8 py-3 text-base font-medium leading-6 text-white bg-blue-600 rounded-full border border-transparent shadow transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-wave md:py-4 md:text-lg md:px-10">View Case Studies</a>
+                    <div class="rounded-full overflow-hidden">
+                        <x-button href="#_" tag="a" color="info" size="lg">
+                            View Case Studies
+                        </x-button>
+                    </div>
                 </div>
                 <div class="w-full sm:w-4/5 lg:w-1/2">
                     <blockquote class="flex flex-row-reverse col-span-1 justify-between items-center p-6 w-full bg-white rounded-xl shadow sm:flex-row">

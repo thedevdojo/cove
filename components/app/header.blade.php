@@ -81,62 +81,11 @@
                     {{-- @include('theme::partials.notifications') --}}
 
                     <!-- Profile dropdown -->
-                    <div @click.away="open = false" class="flex relative items-center ml-3 h-full" x-data="{ open: false }">
-                        <div>
-                            <button @click="open = !open" class="flex text-sm rounded-full border-2 border-transparent transition duration-150 ease-in-out focus:outline-none focus:border-zinc-300" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open" aria-expanded="true">
-                                <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->avatar() . '?' . time() }}" alt="{{ auth()->user()->name }}'s Avatar">
-                            </button>
-                        </div>
+                    
 
-                        <div
-                            x-show="open"
-                            x-transition:enter="duration-100 ease-out scale-95"
-                            x-transition:enter-start="opacity-50 scale-95"
-                            x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition duration-50 ease-in scale-100"
-                            x-transition:leave-start="opacity-100 scale-100"
-                            x-transition:leave-end="opacity-0 scale-95"
-                            class="absolute top-0 right-0 mt-20 w-56 rounded-xl transform origin-top-right" x-cloak>
+                        <x-app.user-dropdown></x-app.user-dropdown>
 
-                            <div class="bg-white rounded-xl border shadow-md border-zinc-100" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                <a href="/profile" class="block px-4 py-3 text-zinc-700 hover:text-zinc-800">
-
-                                    <span class="block text-sm font-medium leading-tight truncate">
-                                        {{ auth()->user()->name }}
-                                    </span>
-                                    <span class="text-xs leading-5 text-zinc-600">
-                                        View Profile
-                                    </span>
-                                </a>
-                                @impersonating
-                                        <a href="{{ route('impersonate.leave') }}" class="block px-4 py-2 text-sm leading-5 text-blue-900 bg-blue-50 border-t text-zinc-700 border-zinc-100 hover:bg-blue-100 focus:outline-none focus:bg-blue-200">Leave impersonation</a>
-                                @endImpersonating
-                                <div class="border-t border-zinc-100"></div>
-                                <div class="py-1">
-
-                                    <div class="block px-4 py-1">
-                                        <span class="inline-block px-2 my-1 -ml-1 text-xs font-medium leading-5 rounded text-zinc-600 bg-zinc-200">{{ auth()->user()->roles->first()->name }}</span>
-                                    </div>
-                                    @trial
-                                        <a href="{{ route('wave.settings', 'plans') }}" class="block px-4 py-2 text-sm leading-5 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none focus:bg-zinc-100 focus:text-zinc-900">Upgrade My Account</a>
-                                    @endtrial
-                                    @if( !auth()->guest() && auth()->user()->can('browse_admin') )
-                                        <a href="{{ route('voyager.dashboard') }}" class="block px-4 py-2 text-sm leading-5 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none focus:bg-zinc-100 focus:text-zinc-900"><i class="fa fa-bolt"></i> Admin</a>
-                                    @endif
-                                    <a href="" class="block px-4 py-2 text-sm leading-5 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none focus:bg-zinc-100 focus:text-zinc-900">My Profile</a>
-                                    <a href="" class="block px-4 py-2 text-sm leading-5 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none focus:bg-zinc-100 focus:text-zinc-900">Settings</a>
-
-                                </div>
-                                <div class="border-t border-zinc-100"></div>
-                                <div class="py-1">
-                                    <a href="{{ route('logout') }}" class="block px-4 py-2 w-full text-sm leading-5 text-left text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none focus:bg-zinc-100 focus:text-zinc-900" role="menuitem">
-                                        Sign out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    
                 </div>
 
             </div>
