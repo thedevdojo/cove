@@ -13,7 +13,7 @@
     ]"
 >
     <x-container>
-        <div class="relative pt-10">
+        <div class="relative pt-5">
             <x-marketing.heading
                 title="From The Blog"
                 description="Check out some of our latest blog posts below."
