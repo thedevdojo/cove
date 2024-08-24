@@ -16,7 +16,7 @@
         class="absolute top-0 right-0 mt-20 w-56 rounded-xl transform origin-top-right" x-cloak>
 
         <div class="bg-white rounded-xl border shadow-md border-zinc-100" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-            <a href="/profile" class="block px-4 py-3 text-zinc-700 hover:text-zinc-800">
+            <a href="/profile/{{ auth()->user()->username }}" class="block px-4 py-3 text-zinc-700 hover:text-zinc-800">
                 <span class="block text-sm font-medium leading-tight truncate">{{ auth()->user()->name }}</span>
                 <span class="text-xs leading-5 text-zinc-600">View Profile</span>
             </a>

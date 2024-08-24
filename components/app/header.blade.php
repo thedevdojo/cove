@@ -1,8 +1,7 @@
 <header x-data="{ mobileMenuOpen: false }" class="relative z-30 @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-zinc-50' }}@endif">
-    <div class="px-8 mx-auto max-w-7xl xl:px-5">
+    <x-app.container-full>
         <div class="flex relative z-30 justify-between items-center h-24 md:space-x-6">
             <div class="inline-flex">
-            <!-- data-replace='{ "translate-y-12": "translate-y-0", "scale-110": "scale-100", "opacity-0": "opacity-100" }' -->
                 <a href="{{ route('home') }}" class="flex justify-center items-center space-x-3 text-blue-500 transition-all duration-1000 ease-out transform">
                    <x-logo class="w-auto h-8"></x-logo>
                 </a>
@@ -19,8 +18,8 @@
             </div>
 
             <div x-data="{ open: false }" class="flex h-full md:flex-1">
-                <nav class="hidden flex-1 space-x-8 h-full md:flex">
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none border-b-2 border-transparent @if(Request::is('dashboard')){{ 'border-b-2 border-indigo-500 text-zinc-900 focus:border-indigo-700' }}@else{{ 'text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 focus:text-zinc-700 focus:border-zinc-300' }}@endif">Dashboard</a>
+                <nav class="hidden flex-1 space-x-4 h-full lg:space-x-5 xl:space-x-8 md:flex">
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none @if(Request::is('dashboard')){{ 'text-zinc-900' }}@else{{ 'text-zinc-500 hover:text-zinc-900' }}@endif">Dashboard</a>
                     <div x-data="{ dropdown: false }" @mouseenter="dropdown = true" @mouseleave="dropdown=false" @click.away="dropdown=false" class="inline-flex relative items-center px-1 pt-1 text-sm font-medium leading-5 border-b-2 border-transparent transition duration-150 ease-in-out cursor-pointer text-zinc-500 hover:text-zinc-700 hover:border-zinc-300 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">
                         <span>Resources</span>
                         <svg class="ml-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -37,7 +36,7 @@
                             <div class="rounded-xl border shadow-md border-zinc-100">
                                 <div class="overflow-hidden rounded-xl shadow-xs">
                                     <div class="grid relative z-20 gap-6 px-5 py-6 bg-white sm:p-8 sm:gap-8">
-                                        <a href="{{ url('docs') }}" class="block px-5 py-3 -m-3 space-y-1 rounded-xl transition duration-150 ease-in-out hover:bg-zinc-100">
+                                        <a href="https://devdojo.com/wave/docs" target="_blank" class="block px-5 py-3 -m-3 space-y-1 rounded-xl transition duration-150 ease-in-out hover:bg-zinc-100">
                                             <p class="text-base font-medium leading-6 text-zinc-900">
                                                 Documentation
                                             </p>
@@ -66,31 +65,23 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out text-zinc-500 hover:text-zinc-700 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">Support</a>
+                    
+                    <a href="https://devdojo.com/questions" target="_blank" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out text-zinc-500 hover:text-zinc-700 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">Questions</a>
+                    <a href="/changelog" class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 transition duration-150 ease-in-out text-zinc-500 hover:text-zinc-700 focus:outline-none focus:text-zinc-700 focus:border-zinc-300">Changelog</a>
                 </nav>
 
-
                 <div class="flex lg:ml-6 sm:items-center">
-
                     @if( auth()->user()->onTrial() )
                         <div class="hidden relative justify-center items-center h-full md:flex">
                             <span class="px-3 py-1 text-xs text-red-600 bg-red-100 rounded-md border border-zinc-200">You have {{ auth()->user()->daysLeftOnTrial() }} @if(auth()->user()->daysLeftOnTrial() > 1){{ 'Days' }}@else{{ 'Day' }}@endif left on your Trial</span>
                         </div>
-                    @endif
-
-                    {{-- @include('theme::partials.notifications') --}}
-
-                    <!-- Profile dropdown -->
-                    
-
-                        <x-app.user-dropdown></x-app.user-dropdown>
-
-                    
+                    @endif                
+                    <x-app.notifications-dropdown></x-app.notifications-dropdown>
+                    <x-app.user-dropdown></x-app.user-dropdown>
                 </div>
-
             </div>
         </div>
-    </div>
+    </x-app.container.full>
 
     {{-- Mobile Menu --}}
     <div x-show="mobileMenuOpen" x-transition:enter="duration-300 ease-out scale-100" x-transition:enter-start="opacity-50 scale-110" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition duration-75 ease-in scale-100" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-100" class="absolute inset-x-0 top-0 transition transform origin-top md:hidden">

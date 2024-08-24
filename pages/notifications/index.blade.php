@@ -54,7 +54,7 @@
 										<span class="flex flex-col flex-1 items-start ml-3 w-0">
 											<span class="text-sm leading-5 text-zinc-600">
 												<strong>{{ @$notification_data->user['name'] }} @if(isset($notification_data->type) && @$notification_data->type == 'message'){{ 'left a message' }}@else{{ 'said' }}@endif</strong>
-												{{ @$notification_data->body }} in <span class="notification-highlight">{{ @$notification_data->title }}</span>
+												{{ @$notification_data->body }}
 											</span>
 											<span class="mt-2 text-sm font-medium leading-5 text-zinc-500">
 												<span class="notification-datetime">{{ \Carbon\Carbon::parse(@$notification->created_at)->format('F, jS h:i A') }}</span>

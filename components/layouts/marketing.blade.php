@@ -5,9 +5,6 @@
 </head>
 <body class="flex flex-col min-h-screen @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-zinc-50' }}@endif @if(config('wave.dev_bar')){{ 'pb-10' }}@endif">
 
-    <div class="bg-red-500 text-white text-center h-10 flex justify-center items-center">
-        This theme is still not ready and in progress for version 3.0
-    </div>
     <x-marketing.header></x-marketing.header>
 
     <main class="overflow-x-hidden flex-grow">

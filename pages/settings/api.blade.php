@@ -108,7 +108,7 @@
                 description="Manage your API Keys"
             >
                 <div class="flex flex-col">
-                    <form wire:submit="add" class="w-full max-w-lg">
+                    <form wire:submit="add" class="w-full p-6">
                         {{ $this->form }}
                         <div class="pt-6 w-full text-right">
                             <x-button type="submit">Create New Key</x-button>

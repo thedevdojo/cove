@@ -82,7 +82,7 @@
                         <div class="flex overflow-hidden justify-center w-auto h-auto bg-white rounded-2xl border shadow-sm border-neutral-200/70">
                             <div x-show="navigationMenu == 'platform'" class="flex gap-x-3 justify-center items-stretch p-3 w-full max-w-7xl">
                                 <div class="flex relative flex-col justify-center items-center p-10 w-48 h-full text-center bg-blue-600 rounded-xl">
-                                    <img src="{{ Storage::url('images/wave-white.png') }}" class="z-20 w-auto h-4 -translate-x-1.5">
+                                    <x-logo class="h-7 text-white"></x-logo>
                                     <h3 class="z-30 mt-1 mt-4 text-xs font-normal text-blue-200">Start building your next great idea.</h3>
                                     <a href="https://devdojo.com/wave" class="block relative items-center px-4 py-2 mt-5 w-full text-sm font-medium leading-5 text-center text-blue-500 bg-white rounded-full border border-transparent shadow-sm transition duration-150 ease-in-out hover:bg-zinc-100 focus:outline-none focus:border-zinc-300 focus:shadow-outline-gray active:bg-zinc-100">
                                         Download
@@ -140,18 +140,18 @@
 
             <div class="hidden relative z-30 flex-shrink-0 justify-center items-center space-x-3 h-full text-sm md:flex">
                 @if(auth()->guest())
-                    <div class="rounded-full overflow-hidden">
+                    <div class="overflow-hidden rounded-full">
                         <x-button href="{{ route('login') }}" tag="a" color="gray" size="md">
                             Sign in
                         </x-button>
                     </div>
-                    <div class="rounded-full overflow-hidden">
+                    <div class="overflow-hidden rounded-full">
                         <x-button href="{{ route('register') }}" tag="a" color="info" size="md">
                             Sign up
                         </x-button>
                     </div>
                 @else
-                    <div class="rounded-full overflow-hidden">
+                    <div class="overflow-hidden rounded-full">
                         <x-button href="{{ route('dashboard') }}" tag="a" color="info" size="md">
                             View Dashboard
                         </x-button>
