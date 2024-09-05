@@ -1,5 +1,17 @@
 .fi-btn{
-    @apply text-base;
+    @apply text-2xl;
+}
+
+.fi-btn.fi-btn-size-md{
+    @apply px-4 py-2.5;
+}
+
+.fi-btn.fi-btn-size-lg{
+    @apply px-5 py-3 text-base;
+}
+
+.fi-btn.fi-btn-size-xl{
+    @apply px-6 py-4 text-base;
 }
 
 .fi-btn.fi-color-primary{

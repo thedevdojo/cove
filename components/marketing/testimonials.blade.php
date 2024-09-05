@@ -10,7 +10,7 @@
                     </h2>
                     <p class="pr-5 my-6 text-lg text-zinc-600 md:text-center lg:text-left">This is an example section of where you will add your testimonials for your Software as a Service.</p>
                     <div class="rounded-full overflow-hidden">
-                        <x-button href="#_" tag="a" color="info" size="lg">
+                        <x-button href="#_" tag="a" color="info" size="xl">
                             View Case Studies
                         </x-button>
                     </div>

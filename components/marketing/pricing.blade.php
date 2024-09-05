@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="rounded-b-lg overflow-hidden">
-                            <x-button class="w-full" :color="($plan->default) ? 'info' : null" tag="a" size="lg" href="/settings/subscription">
+                            <x-button class="w-full rounded-tl-none rounded-tr-none" :color="($plan->default) ? 'info' : null" tag="a" size="lg" href="/settings/subscription">
                                 Get Started
                             </x-button>
                         </div>

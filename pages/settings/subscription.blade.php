@@ -8,8 +8,8 @@
     use Filament\Forms\Form;
     use Filament\Notifications\Notification;
     
-    name('settings.subscription');
     middleware('auth');
+    name('settings.subscription');
 
 	new class extends Component
 	{
@@ -58,9 +58,9 @@
                             </x-app.alert>
                         </div>
                         <livewire:billing.checkout />
-                        <p class="flex items-center mt-7 ml-2 mb-4">
-                            <x-phosphor-shield-check-duotone class="mr-1 w-4 h-4" />
-                            <span class="mr-1 text-gray-500 text-xs">Billing is securely managed via </span><strong class="text-xs">{{ ucfirst(config('wave.billing_provider')) }} Payment Platform</strong>.
+                        <p class="flex items-center mb-4 ml-2 mt-7">
+                            <x-phosphor-shield-check-duotone class="w-4 h-4 mr-1" />
+                            <span class="mr-1 text-xs text-gray-500">Billing is securely managed via </span><strong class="text-xs">{{ ucfirst(config('wave.billing_provider')) }} Payment Platform</strong>.
                         </p>
                     @endnotsubscriber
                 @endrole
