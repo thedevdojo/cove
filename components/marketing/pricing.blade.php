@@ -1,5 +1,5 @@
 
-<section class="pt-10 max-w-7xl mx-auto">
+<section class="pt-10 md:px-8 px-6 max-w-6xl mx-auto">
 
     <x-marketing.heading
         title="Pricing Plans"
@@ -25,8 +25,8 @@
         "
         class="mx-auto my-12 w-full" x-cloak>
 
-        <div class="flex relative justify-center items-center pb-5 -translate-y-2">
-            <div class="inline-flex relative justify-center items-center p-1 mx-auto w-auto text-center rounded-full border-2 border-blue-600 -translate-y-3">
+        <div class="flex relative justify-start sm:justify-center items-center pb-5 -translate-y-2">
+            <div class="inline-flex relative justify-center items-center p-1 sm:mx-auto w-auto text-center rounded-full border-2 border-blue-600 -translate-y-3">
                 <div x-ref="monthly" x-on:click="billing='Monthly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Monthly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
                     Monthly
                 </div>
@@ -39,11 +39,11 @@
             </div>  
         </div>
 
-        <div class="flex flex-wrap space-x-5">
+        <div class="flex lg:flex-row flex-col flex-wrap lg:space-x-8">
 
             @foreach(Wave\Plan::where('active', 1)->get() as $plan)
                 @php $features = explode(',', $plan->features); @endphp
-                <div class="flex-1 px-0 mx-auto mb-6 w-full max-w-md lg:mb-0 @if($plan->default) scale-105 @endif">
+                <div class="flex-1 px-0 mx-auto mb-6 w-full sm:max-w-md lg:mb-0 @if($plan->default) lg:scale-105 @endif">
                     <div class="flex flex-col mb-10 h-full rounded-lg bg-white border-zinc-200 text-zinc-800 border shadow-xl sm:mb-0 relative">
                     
                         
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <p class="my-8 w-full text-left text-zinc-500 sm:my-10 sm:text-center">All plans are fully configurable in the Admin Area.</p>
+    <p class="lg:my-8 lg:translate-y-0 -translate-y-12 w-full text-zinc-500 sm:my-10 text-center">All plans are fully configurable in the Admin Area.</p>
 
     
 </section>

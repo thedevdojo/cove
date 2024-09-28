@@ -4,7 +4,5 @@
 ?>
 
 <x-layouts.marketing>
-    <x-container>
-        <x-marketing.pricing></x-marketing.pricing>
-    </x-container>
+    <x-marketing.pricing></x-marketing.pricing>
 </x-layouts.marketing>

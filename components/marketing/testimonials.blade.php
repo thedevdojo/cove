@@ -1,6 +1,6 @@
 
 <section id="testimonials">
-    <div class="flex relative justify-center items-center pt-32 pb-12 bg-zinc-100 md:pb-32 lg:pb-64 min-w-screen">
+    <div class="flex relative justify-center items-center pt-24 sm:pt-32 pb-12 bg-zinc-100 md:pb-32 lg:pb-64 min-w-screen">
         <div class="px-10 pb-20 mx-auto max-w-6xl bg-zinc-100">
             <div class="flex flex-col items-center lg:flex-row">
                 <div class="flex flex-col justify-center mb-10 w-full h-full lg:pr-8 sm:w-4/5 md:items-center lg:mb-0 lg:items-start md:w-3/5 lg:w-1/2">
@@ -10,16 +10,16 @@
                     </h2>
                     <p class="pr-5 my-6 text-lg text-zinc-600 md:text-center lg:text-left">This is an example section of where you will add your testimonials for your Software as a Service.</p>
                     <div class="rounded-full overflow-hidden">
-                        <x-button href="#_" tag="a" color="info" size="xl">
-                            View Case Studies
+                        <x-button href="#_" tag="a" color="info" size="xl" class="md:w-auto w-full">
+                            View All Case Studies
                         </x-button>
                     </div>
                 </div>
                 <div class="w-full sm:w-4/5 lg:w-1/2">
-                    <blockquote class="flex flex-row-reverse col-span-1 justify-between items-center p-6 w-full bg-white rounded-xl shadow sm:flex-row">
-                        <div class="flex flex-col pl-5 sm:pr-8">
-                            <div class="relative sm:pl-12">
-                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current sm:block"
+                    <blockquote class="flex flex-row-reverse col-span-1 justify-between items-center p-6 w-full bg-white rounded-xl shadow md:flex-row">
+                        <div class="flex flex-col pl-5 md:pr-8">
+                            <div class="relative md:pl-12">
+                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current md:block"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                     <path
                                         d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
@@ -28,7 +28,7 @@
                                 </p>
                             </div>
 
-                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate sm:pl-12">Jane Cooper <span
+                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate md:pl-12">Jane Cooper <span
                                     class="mt-1 text-sm leading-5 text-zinc-500 truncate">- CEO SomeCompany</span></h3>
                             <p class="mt-1 text-sm leading-5 text-zinc-500 truncate"></p>
                         </div>
@@ -37,17 +37,17 @@
                             alt="">
                     </blockquote>
                     <blockquote
-                        class="flex flex-row-reverse col-span-1 justify-between items-center p-6 my-5 w-full bg-white rounded-lg shadow sm:flex-row">
-                        <div class="flex flex-col pl-5 sm:pr-10">
-                            <div class="relative sm:pl-12">
-                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current sm:block"
+                        class="flex flex-row-reverse col-span-1 justify-between items-center p-6 my-5 w-full bg-white rounded-lg shadow md:flex-row">
+                        <div class="flex flex-col pl-5 md:pr-10">
+                            <div class="relative md:pl-12">
+                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current md:block"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                     <path
                                         d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
                                 </svg>
                                 <p class="mt-2 text-base text-zinc-600">Wave saved us hundreds of development hours. Creating a Software as a Service is now easier than ever with Wave.</p>
                             </div>
-                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate sm:pl-12">John Doe <span
+                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate md:pl-12">John Doe <span
                                     class="mt-1 text-sm leading-5 text-zinc-500 truncate">- CEO SomeCompany</span></h3>
                             <p class="mt-1 text-sm leading-5 text-zinc-500 truncate"></p>
                         </div>
@@ -56,10 +56,10 @@
                             alt="">
                     </blockquote>
                     <blockquote
-                        class="flex flex-row-reverse col-span-1 justify-between items-center p-6 w-full bg-white rounded-lg shadow sm:flex-row">
-                        <div class="flex flex-col pl-5 sm:pr-10">
-                            <div class="relative sm:pl-12">
-                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current sm:block"
+                        class="flex flex-row-reverse col-span-1 justify-between items-center p-6 w-full bg-white rounded-lg shadow md:flex-row">
+                        <div class="flex flex-col pl-5 md:pr-10">
+                            <div class="relative md:pl-12">
+                                <svg class="hidden absolute left-0 w-10 h-10 text-blue-500 fill-current md:block"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
                                     <path
                                         d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z" />
@@ -67,7 +67,7 @@
                                 <p class="mt-2 text-base text-zinc-600">This is the best solution available for creating your own Software as a Service!</p>
                             </div>
 
-                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate sm:pl-12">John Smith <span
+                            <h3 class="mt-3 text-base font-medium leading-5 text-zinc-800 truncate md:pl-12">John Smith <span
                                     class="mt-1 text-sm leading-5 text-zinc-500 truncate">- CEO SomeCompany</span></h3>
                             <p class="mt-1 text-sm leading-5 text-zinc-500 truncate"></p>
                         </div>
