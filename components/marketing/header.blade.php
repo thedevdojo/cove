@@ -1,12 +1,12 @@
 <header x-data="{ mobileMenuOpen: false }" class="relative z-30 @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-zinc-50' }}@endif">
-    <div class="md:px-8 mx-auto max-w-7xl xl:px-5">
+    <div class="mx-auto md:px-8 max-w-7xl xl:px-5">
         <div class="relative z-30 flex items-center justify-between h-24 md:space-x-6">
             <div class="inline-flex md:pl-0 pl-7">
                 <a href="{{ route('home') }}" class="flex items-center justify-center space-x-3 text-blue-500 transition-all duration-1000 ease-out transform">
                    <x-logo class="w-auto h-8"></x-logo>
                 </a>
             </div>
-            <div class="flex justify-end md:hidden md:pr-0 pr-6">
+            <div class="flex justify-end pr-6 md:hidden md:pr-0">
                 <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-full text-zinc-400 hover:text-zinc-500 hover:bg-zinc-100 focus:outline-none focus:bg-zinc-100 focus:text-zinc-500">
                     <svg x-show="!mobileMenuOpen" class="w-6 h-6" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
                     <svg x-show="mobileMenuOpen" class="w-6 h-6" x-cloak xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
@@ -15,7 +15,7 @@
 
             <nav 
                 :class="{ 'hidden md:flex relative' : !mobileMenuOpen, 'flex absolute pointer-events-none md:pointer-events-auto  pt-24' : mobileMenuOpen }"
-                class="top-0 left-0 z-20 md:h-auto justify-stretch md:justify-center h-screen w-full" x-cloak>
+                class="top-0 left-0 z-20 w-full h-screen md:h-auto justify-stretch md:justify-center" x-cloak>
                 <div x-data="{
                             navigationMenuOpen: false,
                             navigationMenu: '',
@@ -41,29 +41,29 @@
                                 this.navigationMenuOpen = false;
                                 this.navigationMenu = '';
                             }
-                        }" class="relative pointer-events-auto z-10 w-full bg-white md:w-auto"
+                        }" class="relative z-10 w-full bg-white pointer-events-auto md:bg-transparent md:w-auto"
                     >
-                        <div class="relative md:w-auto w-full">
-                            <ul class="flex items-stretch md:divide-y-0 divide-y divide-gray-200 md:border-t-0 md:border-b-0 border-t border-b border-gray-200 md:items-center md:flex-row md:w-auto w-full flex-col justify-center flex-1 md:p-1 list-none md:rounded-md text-zinc-800 group">
+                        <div class="relative w-full md:w-auto">
+                            <ul class="flex flex-col items-stretch justify-center flex-1 w-full list-none border-t border-b border-gray-200 divide-y divide-gray-200 md:divide-y-0 md:border-t-0 md:border-b-0 md:items-center md:flex-row md:w-auto md:p-1 md:rounded-md text-zinc-800 group">
                                 <li class="md:px-0.5 md:w-auto w-full" @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='platform'" @mouseleave="navigationMenuLeave()">
-                                    <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='platform', 'hover:text-zinc-900' : navigationMenu!='platform' }" class="inline-flex md:w-auto w-full items-center justify-between md:justify-center h-auto md:h-10 px-8 md:px-4 py-4 md:py-2 text-sm font-medium transition-colors md:w-auto w-full md:rounded-full md:w-max focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
+                                    <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='platform', 'hover:text-zinc-900' : navigationMenu!='platform' }" class="inline-flex items-center justify-between w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:w-auto md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-max focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
                                         <span>Platform</span>
                                         <svg :class="{ '-rotate-180' : navigationMenuOpen==true && navigationMenu == 'platform' }" class="relative top-[1px] ml-1 h-3 w-3 ease-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                     </button>
                                 </li>
                                 <li class="md:px-0.5 md:w-auto w-full" @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='resources'" @mouseleave="navigationMenuLeave()">
-                                    <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='resources', 'hover:text-zinc-900' : navigationMenu!='resources' }" class="inline-flex items-center justify-between md:justify-center h-auto md:h-10 px-8 md:px-4 py-4 md:py-2 text-sm font-medium transition-colors md:rounded-full md:w-auto w-full md:w-max hover:text-neutral-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
+                                    <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='resources', 'hover:text-zinc-900' : navigationMenu!='resources' }" class="inline-flex items-center justify-between w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-auto md:w-max hover:text-neutral-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
                                         <span>Resources</span>
                                         <svg :class="{ '-rotate-180' : navigationMenuOpen==true && navigationMenu == 'resources' }" class="relative top-[1px] ml-1 h-3 w-3 ease-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                     </button>
                                 </li>
                                 <li class="md:px-0.5 md:w-auto w-full">
-                                    <a href="/pricing" class="inline-flex items-center justify-start md:justify-center h-auto md:h-10 px-8 md:px-4 py-4 md:py-2 text-sm font-medium transition-colors md:rounded-full md:w-auto w-full md:w-max hover:text-zinc-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-zinc-100 group">
+                                    <a href="/pricing" class="inline-flex items-center justify-start w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-auto md:w-max hover:text-zinc-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-zinc-100 group">
                                         Pricing
                                     </a>
                                 </li>
                                 <li class="md:px-0.5 md:w-auto w-full">
-                                    <a href="/blog" class="inline-flex items-center justify-start md:justify-center h-auto md:h-10 px-8 md:px-4 py-4 md:py-2 text-sm font-medium transition-colors md:rounded-full md:w-auto w-full md:w-max hover:text-zinc-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-zinc-100 group">
+                                    <a href="/blog" class="inline-flex items-center justify-start w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-auto md:w-max hover:text-zinc-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-zinc-100 group">
                                         Blog
                                     </a>
                                 </li>
@@ -99,11 +99,11 @@
                         @mouseover="navigationMenuClearCloseTimeout()" 
                         @mouseleave="navigationMenuOpen=false" 
                         :class="{ 'translate-y-24 md:translate-y-11 -mt-1.5' : navigationMenu  == 'resources', 'translate-y-10 -mt-1 md:translate-y-11' : navigationMenu  == 'platform' }"
-                        class="absolute top-0 pt-4 duration-200 ease-out md:w-auto w-full -translate-x-1/2 md:mt-0" 
+                        class="absolute top-0 w-full pt-4 duration-200 ease-out -translate-x-1/2 md:w-auto md:mt-0" 
                     x-cloak>
-                        <div class="flex justify-center w-full md:w-auto h-auto overflow-hidden bg-white border shadow-sm md:rounded-2xl border-neutral-200/70">
-                            <div x-show="navigationMenu == 'platform'" class="flex lg:flex-row flex-col items-stretch justify-center w-full p-3 gap-x-3 max-w-7xl">
-                                <div class="relative hidden xl:flex flex-col items-center justify-center w-48 h-full p-10 text-center bg-blue-600 rounded-xl">
+                        <div class="flex justify-center w-full h-auto overflow-hidden bg-white border shadow-sm md:w-auto md:rounded-2xl border-neutral-200/70">
+                            <div x-show="navigationMenu == 'platform'" class="flex flex-col items-stretch justify-center w-full p-3 lg:flex-row gap-x-3 max-w-7xl">
+                                <div class="relative flex-col items-center justify-center hidden w-48 h-full p-10 text-center bg-blue-600 xl:flex rounded-xl">
                                     <x-logo class="text-white h-7"></x-logo>
                                     <h3 class="z-30 mt-1 mt-4 text-xs font-normal text-blue-200">Start building your next great idea.</h3>
                                     <a href="https://devdojo.com/wave" class="relative items-center block w-full px-4 py-2 mt-5 text-sm font-medium leading-5 text-center text-blue-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-full shadow-sm hover:bg-zinc-100 focus:outline-none focus:border-zinc-300 focus:shadow-outline-gray active:bg-zinc-100">
