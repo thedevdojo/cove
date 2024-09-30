@@ -1,5 +1,5 @@
 
-<section class="pt-10 md:px-8 px-6 max-w-6xl mx-auto">
+<section class="max-w-6xl px-6 pt-10 mx-auto md:px-8">
 
     <x-marketing.heading
         title="Pricing Plans"
@@ -7,7 +7,7 @@
         align="center"
     />
 
-    <div x-data="{ on: false, billing: 'Monthly', basic: {'Monthly' : '19', 'Yearly' : '180'}, pro: {'Monthly' : '49', 'Yearly' : '450' },
+    <div x-data="{ on: false, billing: '{{ get_default_billing_cycle() }}',
             toggleRepositionMarker(toggleButton){
                 this.$refs.marker.style.width=toggleButton.offsetWidth + 'px';
                 this.$refs.marker.style.height=toggleButton.offsetHeight + 'px';
@@ -23,39 +23,44 @@
                     }, 10); 
                 }, 1);
         "
-        class="mx-auto my-12 w-full" x-cloak>
+        class="w-full mx-auto my-12" x-cloak>
 
-        <div class="flex relative justify-start sm:justify-center items-center pb-5 -translate-y-2">
-            <div class="inline-flex relative justify-center items-center p-1 sm:mx-auto w-auto text-center rounded-full border-2 border-blue-600 -translate-y-3">
-                <div x-ref="monthly" x-on:click="billing='Monthly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Monthly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
-                    Monthly
-                </div>
-                <div x-ref="yearly" x-on:click="billing='Yearly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Yearly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
-                    Yearly
-                </div>
-                <div x-ref="marker" class="absolute left-0 z-10 w-1/2 h-full opacity-0" x-cloak>
-                    <div class="w-full h-full bg-blue-600 rounded-full shadow-sm"></div>
-                </div>
-            </div>  
-        </div>
+        @if(has_monthly_yearly_toggle())
+            <div class="relative flex items-center justify-start pb-5 -translate-y-2 sm:justify-center">
+                <div class="relative inline-flex items-center justify-center w-auto p-1 text-center -translate-y-3 border-2 border-blue-600 rounded-full sm:mx-auto">
+                    <div x-ref="monthly" x-on:click="billing='Monthly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Monthly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
+                        Monthly
+                    </div>
+                    <div x-ref="yearly" x-on:click="billing='Yearly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Yearly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
+                        Yearly
+                    </div>
+                    <div x-ref="marker" class="absolute left-0 z-10 w-1/2 h-full opacity-0" x-cloak>
+                        <div class="w-full h-full bg-blue-600 rounded-full shadow-sm"></div>
+                    </div>
+                </div>  
+            </div>
+        @endif
 
-        <div class="flex lg:flex-row flex-col flex-wrap lg:space-x-8">
+        <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
 
             @foreach(Wave\Plan::where('active', 1)->get() as $plan)
                 @php $features = explode(',', $plan->features); @endphp
-                <div class="flex-1 px-0 mx-auto mb-6 w-full sm:max-w-md lg:mb-0 @if($plan->default) lg:scale-105 @endif">
-                    <div class="flex flex-col mb-10 h-full rounded-lg bg-white border-zinc-200 text-zinc-800 border shadow-xl sm:mb-0 relative">
+                <div 
+                    {{--  Say that you have a monthly plan that doesn't have a yearly plan, in that case we will hide the place that doesn't have a price_id --}}
+                    x-show="(billing == 'Monthly' && '{{ $plan->monthly_price_id }}' != '') || (billing == 'Yearly' && '{{ $plan->yearly_price_id }}' != '')" 
+                    class="flex-1 px-0 mx-auto mb-6 w-full sm:max-w-lg lg:mb-0 @if($plan->default) lg:scale-105 @endif">
+                    <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">
                     
                         
                         <div class="px-10 pt-7">
-                            <div class="inline-block absolute right-0 mr-6 transform">
+                            <div class="absolute right-0 inline-block mr-6 transform">
                                 <h2 class="relative z-20 w-full h-full px-2 py-1 text-xs font-bold leading-tight tracking-wide text-center uppercase bg-white border-2 @if($plan->default){{ 'border-blue-400 text-blue-500' }}@else{{ 'border-zinc-900 text-zinc-800' }}@endif rounded">{{ $plan->name }}</h2>
                             </div>
                         </div>
 
 
                         <div class="px-8 mt-5">
-                            <span class="text-5xl font-bold font-mono">$<span x-text="billing == 'Monthly' ? '{{ $plan->monthly_price }}' : '{{ $plan->yearly_price }}'"></span></span>
+                            <span class="font-mono text-5xl font-bold">$<span x-text="billing == 'Monthly' ? '{{ $plan->monthly_price }}' : '{{ $plan->yearly_price }}'"></span></span>
                             <span class="text-xl font-bold text-gray-500"><span x-text="billing == 'Monthly' ? 'per month' : 'per year'"></span></span>
                         </div>
 
@@ -68,7 +73,7 @@
                                 @foreach($features as $feature)
                                     <li class="mt-1">
                                         <span class="flex items-center text-green-500">
-                                            <svg class="mr-3 w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"></path></svg>
+                                            <svg class="w-4 h-4 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"></path></svg>
                                             <span class="text-gray-700">
                                                 {{ $feature }}
                                             </span>
@@ -78,7 +83,7 @@
                             </ul>
                         </div>
 
-                        <div class="rounded-b-lg overflow-hidden">
+                        <div class="overflow-hidden rounded-b-lg">
                             <x-button class="w-full rounded-tl-none rounded-tr-none" :color="($plan->default) ? 'info' : null" tag="a" size="lg" href="/settings/subscription">
                                 Get Started
                             </x-button>
@@ -89,7 +94,7 @@
         </div>
     </div>
 
-    <p class="lg:my-8 lg:translate-y-0 -translate-y-12 w-full text-zinc-500 sm:my-10 text-center">All plans are fully configurable in the Admin Area.</p>
+    <p class="w-full text-center -translate-y-12 lg:my-8 lg:translate-y-0 text-zinc-500 sm:my-10">All plans are fully configurable in the Admin Area.</p>
 
     
 </section>
