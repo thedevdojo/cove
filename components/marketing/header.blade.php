@@ -74,13 +74,13 @@
                                         </x-button>
                                     </li>
                                     <li class="md:px-0.5 md:w-auto w-full md:hidden block px-6 py-2">
-                                        <x-button href="{{ route('register') }}" tag="a" color="info" size="md" class="w-full">
+                                        <x-button href="{{ route('register') }}" tag="a" size="md" class="w-full">
                                             Sign up
                                         </x-button>
                                     </li>
                                 @else
                                     <li class="md:px-0.5 md:w-auto w-full md:hidden block px-6 py-2">
-                                        <x-button href="{{ route('dashboard') }}" tag="a" color="info" size="md" class="w-full">
+                                        <x-button href="{{ route('dashboard') }}" tag="a" size="md" class="w-full">
                                             View Dashboard
                                         </x-button>
                                     </li>
@@ -163,18 +163,18 @@
             <div class="relative z-30 items-center justify-center flex-shrink-0 hidden h-full space-x-3 text-sm md:flex">
                 @if(auth()->guest())
                     <div class="overflow-hidden rounded-full">
-                        <x-button href="{{ route('login') }}" tag="a" color="gray" size="md">
+                        <x-button href="{{ route('login') }}" tag="a" color="secondary" size="md">
                             Sign in
                         </x-button>
                     </div>
                     <div class="overflow-hidden rounded-full">
-                        <x-button href="{{ route('register') }}" tag="a" color="info" size="md">
+                        <x-button href="{{ route('register') }}" tag="a" size="md">
                             Sign up
                         </x-button>
                     </div>
                 @else
                     <div class="overflow-hidden rounded-full">
-                        <x-button href="{{ route('dashboard') }}" tag="a" color="info" size="md">
+                        <x-button href="{{ route('dashboard') }}" tag="a" size="md">
                             View Dashboard
                         </x-button>
                     </div>
