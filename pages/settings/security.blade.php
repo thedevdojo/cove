@@ -76,7 +76,7 @@
                 title="Security"
                 description="Update and change your current account password."
             >
-                <form wire:submit="save" class="w-full p-6">
+                <form wire:submit="save" class="w-full sm:p-6">
                     {{ $this->form }}
                     <div class="w-full pt-6 text-right">
                         <x-button type="submit">Save</x-button>

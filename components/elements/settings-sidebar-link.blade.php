@@ -1,4 +1,4 @@
-<a href="{{ $href }}" wire:navigate class="block relative w-full flex items-center px-6 py-3 text-sm font-medium leading-5 @if(Request::is('settings/profile')){{ 'text-zinc-900' }}@else{{ 'text-zinc-600' }}@endif transition duration-150 ease-in-out rounded-md group hover:text-zinc-900 hover:bg-zinc-50 focus:outline-none focus:text-zinc-900 focus:bg-zinc-50">
+<a href="{{ $href }}" wire:navigate class="block relative w-full flex items-center px-4 sm:px-6 py-2 sm:py-3 text-sm font-medium leading-5 @if(Request::is('settings/profile')){{ 'text-zinc-900' }}@else{{ 'text-zinc-600' }}@endif transition duration-150 ease-in-out rounded-md group hover:text-zinc-900 hover:bg-zinc-50 focus:outline-none focus:text-zinc-900 focus:bg-zinc-50">
     <x-dynamic-component :component="$icon" 
         @class([
             'flex-shrink-0 w-5 h-5 md:mr-3 -ml-1 transition duration-150 ease-in-out group-hover:text-zinc-500 group-focus:text-zinc-500',

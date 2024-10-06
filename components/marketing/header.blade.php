@@ -1,4 +1,22 @@
-<header x-data="{ mobileMenuOpen: false }" class="relative z-30 @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-zinc-50' }}@endif">
+<header 
+    x-data="{ 
+        mobileMenuOpen: false, 
+        isMobileView: false, 
+        mobileViewCheck(){
+            if(window.innerWidth > 768) {
+                this.isMobileView = false;
+            } else {
+                this.isMobileView = true;
+            }
+        } 
+    }"
+    x-init="
+        mobileViewCheck();
+        window.addEventListener('resize', function() {
+            mobileViewCheck();
+        });
+    "
+     class="relative z-30 @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-zinc-50' }}@endif">
     <div class="mx-auto md:px-8 max-w-7xl xl:px-5">
         <div class="relative z-30 flex items-center justify-between h-24 md:space-x-6">
             <div class="inline-flex md:pl-0 pl-7">
@@ -14,7 +32,7 @@
             </div>
 
             <nav 
-                :class="{ 'hidden md:flex relative' : !mobileMenuOpen, 'flex absolute pointer-events-none md:pointer-events-auto  pt-24' : mobileMenuOpen }"
+                :class="{ 'hidden md:flex relative' : !mobileMenuOpen, 'md:flex absolute md:relative pointer-events-none md:pointer-events-auto  pt-24 md:pt-0' : mobileMenuOpen }"
                 class="top-0 left-0 z-20 w-full h-screen md:h-auto justify-stretch md:justify-center" x-cloak>
                 <div x-data="{
                             navigationMenuOpen: false,
@@ -45,13 +63,13 @@
                     >
                         <div class="relative w-full md:w-auto">
                             <ul class="flex flex-col items-stretch justify-center flex-1 w-full list-none border-t border-b border-gray-200 divide-y divide-gray-200 md:divide-y-0 md:border-t-0 md:border-b-0 md:items-center md:flex-row md:w-auto md:p-1 md:rounded-md text-zinc-800 group">
-                                <li class="md:px-0.5 md:w-auto w-full" @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='platform'" @mouseleave="navigationMenuLeave()">
+                                <li class="md:px-0.5 md:w-auto w-full" x-on:click="if(isMobileView){ navigationMenuOpen=!navigationMenuOpen; navigationMenuReposition($el); navigationMenu='platform'; }" @mouseover="if(!isMobileView){ navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='platform'; }" @mouseleave="navigationMenuLeave()">
                                     <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='platform', 'hover:text-zinc-900' : navigationMenu!='platform' }" class="inline-flex items-center justify-between w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:w-auto md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-max focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
                                         <span>Platform</span>
                                         <svg :class="{ '-rotate-180' : navigationMenuOpen==true && navigationMenu == 'platform' }" class="relative top-[1px] ml-1 h-3 w-3 ease-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                     </button>
                                 </li>
-                                <li class="md:px-0.5 md:w-auto w-full" @mouseover="navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='resources'" @mouseleave="navigationMenuLeave()">
+                                <li class="md:px-0.5 md:w-auto w-full" x-on:click="if(isMobileView){ navigationMenuOpen=!navigationMenuOpen; navigationMenuReposition($el); navigationMenu='resources'; }" @mouseover="if(!isMobileView){ navigationMenuOpen=true; navigationMenuReposition($el); navigationMenu='resources'; }" @mouseleave="navigationMenuLeave()">
                                     <button :class="{ 'text-zinc-900 bg-zinc-100' : navigationMenu=='resources', 'hover:text-zinc-900' : navigationMenu!='resources' }" class="inline-flex items-center justify-between w-full h-auto px-8 py-4 text-sm font-medium transition-colors md:justify-center md:h-10 md:px-4 md:py-2 md:rounded-full md:w-auto md:w-max hover:text-neutral-900 focus:outline-none disabled:opacity-50 disabled:pointer-events-none group">
                                         <span>Resources</span>
                                         <svg :class="{ '-rotate-180' : navigationMenuOpen==true && navigationMenu == 'resources' }" class="relative top-[1px] ml-1 h-3 w-3 ease-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -98,7 +116,7 @@
                         x-transition:leave-end="opacity-0 scale-[0.9] translate-y-11" 
                         @mouseover="navigationMenuClearCloseTimeout()" 
                         @mouseleave="navigationMenuOpen=false" 
-                        :class="{ 'translate-y-24 md:translate-y-11 -mt-1.5' : navigationMenu  == 'resources', 'translate-y-10 -mt-1 md:translate-y-11' : navigationMenu  == 'platform' }"
+                        :class="{ 'translate-y-24 md:translate-y-11 -mt-1.5' : navigationMenu  == 'resources', 'translate-y-9 md:translate-y-11' : navigationMenu  == 'platform' }"
                         class="absolute top-0 w-full pt-4 duration-200 ease-out -translate-x-1/2 md:w-auto md:mt-0" 
                     x-cloak>
                         <div class="flex justify-center w-full h-auto overflow-hidden bg-white border shadow-sm md:w-auto md:rounded-2xl border-neutral-200/70">

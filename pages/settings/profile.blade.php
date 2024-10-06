@@ -165,7 +165,7 @@
 		"
 		class="relative">
 			<form wire:submit="save" class="w-full">
-				<div class="relative flex flex-col p-6 mt-2 lg:flex-row">
+				<div class="relative flex flex-col p-0 sm:p-6 mt-2 lg:flex-row">
 					<div class="relative flex-shrink-0 w-32 h-32 cursor-pointer group">
 						<img id="preview" src="{{ auth()->user()->avatar() . '?' . time() }}" class="w-32 h-32 border border-gray-200 rounded-full">
                         
@@ -180,7 +180,7 @@
 					@error('avatar')
 						<p class="mt-3 text-sm text-red-600">The avatar must be a valid image type.</p>
 					@enderror
-					<div class="relative w-full pl-6">
+					<div class="relative w-full sm:pl-6 mt:pt-0 pt-5">
 						{{ $this->form }}
 						<div class="w-full pt-6 text-right">
 							<x-button type="submit">Save</x-button>

@@ -18,7 +18,7 @@
     x-data="{ closed: false }"
     x-show="!closed"
     @class([
-        'rounded-lg min-w-[300px] relative flex justify-center items-center w-full px-5 py-3',
+        'rounded-lg sm:min-w-[300px] relative flex justify-center items-center w-full px-5 py-3',
         'bg-white dark:bg-gray-900 border shadow-sm border-gray-200 dark:border-gray-800 dark:text-gray-300 text-gray-600' => $type == 'default',
 		'bg-blue-50 text-blue-700 border border-blue-300' => $type == 'info',
 		'bg-green-50 text-green-700 border border-green-300' => $type == 'success',

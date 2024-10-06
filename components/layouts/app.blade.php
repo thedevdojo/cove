@@ -7,7 +7,7 @@
 
     <x-app.header></x-app.header>
 
-    <main class="overflow-x-hidden flex-grow">
+    <main class="flex-grow overflow-x-hidden">
         {{ $slot }}
     </main>
 
