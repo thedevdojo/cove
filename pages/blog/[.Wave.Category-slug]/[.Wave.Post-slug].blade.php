@@ -5,10 +5,10 @@
 
 <x-layouts.marketing>
     
-    <article id="post-{{ $post->id }}" class="max-w-4xl px-5 mx-auto prose prose-xl lg:prose-2xl lg:px-0">
+    <article id="post-{{ $post->id }}" class="max-w-4xl px-5 mx-auto mt-12 prose prose-xl lg:prose-2xl lg:px-0">
 
         <x-elements.back-button
-            class="max-w-4xl mx-auto mt-8"
+            class="max-w-4xl mx-auto"
             text="back to the blog"
             :href="route('blog')"
         />
@@ -22,7 +22,7 @@
 
             <h1 class="flex flex-col leading-none">
                 <span>{{ $post->title }}</span>
-                <span class="mt-0 mt-10 text-base font-normal">Written on <time datetime="{{ Carbon\Carbon::parse($post->created_at)->toIso8601String() }}">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</time>. Posted in <a href="/blog/{{ $post->category->slug }}" rel="category">{{ $post->category->name }}</a>.</span>
+                <span class="mt-3 text-base font-normal">Written on <time datetime="{{ Carbon\Carbon::parse($post->created_at)->toIso8601String() }}">{{ Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}</time>. Posted in <a href="/blog/{{ $post->category->slug }}" rel="category">{{ $post->category->name }}</a>.</span>
             </h1>
 
 
