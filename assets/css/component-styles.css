@@ -3,7 +3,7 @@
 }
 
 .fi-btn.fi-btn-size-md{
-    @apply px-4 py-2.5;
+    @apply px-4;
 }
 
 .fi-btn.fi-btn-size-lg{
