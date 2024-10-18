@@ -30,9 +30,6 @@
     </div>
     <!-- End Full Loader -->
 
-
-    @waveCheckout
-
     @yield('javascript')
 
     @if(setting('site.google_analytics_tracking_id', ''))
