@@ -22,7 +22,7 @@
             </div>
             <div class="flex w-full mb-16 lg:w-1/2 lg:mb-0">
                 <div class="relative invisible transition-none duration-1000 delay-100 transform translate-x-12 opacity-0" data-replace='{ "transition-none": "transition-all", "invisible": "visible", "translate-x-12": "translate-y-0", "opacity-0": "opacity-100" }'>
-                    <img src="/storage/images/hero-image.png" class="w-full max-w-3xl sm:w-auto">
+                    <img src="/storage/demo/cove-hero-image.png" class="w-full max-w-3xl sm:w-auto">
                 </div>
             </div>
         </div>
