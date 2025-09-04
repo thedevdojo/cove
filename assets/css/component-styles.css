@@ -1,7 +1,3 @@
-.fi-btn{
-    @apply text-2xl;
-}
-
 .fi-btn.fi-btn-size-md{
     @apply px-4;
 }
@@ -10,12 +6,16 @@
     @apply px-5 py-3 text-base;
 }
 
+.fi-color.fi-color-primary{
+    color:#ffffff;
+}
+
 .fi-btn.fi-btn-size-xl{
     @apply px-6 py-4 text-base;
 }
 
 .fi-btn.fi-color-secondary{
-    @apply inline-flex items-center justify-center gap-3 font-medium text-blue-800 duration-200 bg-blue-100 hover:bg-blue-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-200;
+    @apply inline-flex gap-3 justify-center items-center font-medium text-blue-800 bg-blue-100 duration-200 hover:bg-blue-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-200;
 }
 
 label{
@@ -33,7 +33,10 @@ label{
 }
 
 .form-input, .form-textarea, .form-select {
-    @apply px-3 py-2 text-base leading-normal transition duration-150 ease-in-out bg-white border rounded-md appearance-none border-zinc-400 focus:outline-none focus:ring focus:ring-opacity-30 focus:ring-blue-500 focus:border-blue-400;
+    @apply px-3 py-2 text-base leading-normal bg-white rounded-md border transition duration-150 ease-in-out appearance-none border-zinc-400;
+    &:focus{
+        @apply border-blue-400 ring ring-blue-500 outline-none;
+    }
 }
 
 .fi-btn{
