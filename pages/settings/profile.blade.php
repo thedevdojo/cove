@@ -8,7 +8,7 @@
 	use Wave\Traits\HasDynamicFields;
     use Wave\ApiKey;
     
-	middleware('auth');
+	middleware(['auth', 'verified']);
     name('settings.profile');
 
 	new class extends Component implements HasForms
@@ -64,11 +64,18 @@
 		}
 
 		private function saveNewUserAvatar(){
-			$path = 'avatars/' . auth()->user()->username . '.png';
-			$image = \Intervention\Image\ImageManagerStatic::make($this->avatar)->resize(800, 800);
-			Storage::disk('public')->put($path, $image->encode());
-			auth()->user()->avatar = $path;
-			auth()->user()->save();
+			$user = auth()->user();
+			$oldPath = $user->avatar;
+			// Not named after the username, which can change or be taken by someone else later
+			$path = 'avatars/' . $user->id . '-' . \Illuminate\Support\Str::random(20) . '.png';
+			$image = app(\Intervention\Image\ImageManager::class)->read($this->avatar, \Intervention\Image\Decoders\DataUriImageDecoder::class)->resize(800, 800);
+			\Illuminate\Support\Facades\Storage::disk('public')->put($path, $image->encode());
+			$user->avatar = $path;
+			$user->save();
+			// Only remove uploads, and not one another user still points at (old username-based names)
+			if ($oldPath && str_starts_with($oldPath, 'avatars/') && ! $user->newQuery()->where('avatar', $oldPath)->exists()) {
+				\Illuminate\Support\Facades\Storage::disk('public')->delete($oldPath);
+			}
 			// This will update/refresh the avatar in the sidebar
 			$this->js('window.dispatchEvent(new CustomEvent("refresh-avatar"));');
 		}

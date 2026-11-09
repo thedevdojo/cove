@@ -13,7 +13,7 @@
     use Illuminate\Support\Str;
     use Wave\ApiKey;
     
-    middleware('auth');
+    middleware(['auth', 'verified']);
     name('settings.api');
 
 	new class extends Component implements HasForms, Tables\Contracts\HasTable, \Filament\Actions\Contracts\HasActions

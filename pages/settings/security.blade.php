@@ -6,7 +6,7 @@
     use Filament\Forms\Contracts\HasForms;
     use Filament\Notifications\Notification;
     
-    middleware('auth');
+    middleware(['auth', 'verified']);
     name('settings.security');
 
 	new class extends Component implements HasForms
@@ -33,7 +33,7 @@
                     TextInput::make('password')
                         ->label('New Password')
                         ->required()
-                        ->minLength(4)
+                        ->minLength(config('wave.auth.min_password_length'))
                         ->password()
                         ->revealable(),
                     TextInput::make('password_confirmation')
