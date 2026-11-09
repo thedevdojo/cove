@@ -1,3 +1,8 @@
+@php
+    // Wave passes the page as an array, so load the model for its attributes and dates
+    $page = \Wave\Page::findOrFail($page['id']);
+@endphp
+
 <x-layouts.marketing>
 
     <div class="py-2 lg:py-16">
