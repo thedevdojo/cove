@@ -11,7 +11,9 @@
 
         <div class="flex-shrink-0">
             <a href="{{ $post->link() }}">
-                <img class="object-cover w-full h-48" src="{{ $post->image() }}" alt="">
+                @if($post->image)
+                    <img class="object-cover w-full h-48" src="{{ $post->image() }}" alt="{{ $post->title }}">
+                @endif
             </a>
         </div>
         <div class="flex relative flex-col flex-1 justify-between p-6 bg-white">
