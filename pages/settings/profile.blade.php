@@ -68,8 +68,12 @@
 			$oldPath = $user->avatar;
 			// Not named after the username, which can change or be taken by someone else later
 			$path = 'avatars/' . $user->id . '-' . \Illuminate\Support\Str::random(20) . '.png';
-			$image = app(\Intervention\Image\ImageManager::class)->read($this->avatar, \Intervention\Image\Decoders\DataUriImageDecoder::class)->resize(800, 800);
-			\Illuminate\Support\Facades\Storage::disk('public')->put($path, $image->encode());
+			$manager = app(\Intervention\Image\ImageManager::class);
+			// Intervention Image 4 (Wave 3.7+) renamed read() and the encoders, so support both versions
+			$image = method_exists($manager, 'decodeDataUri')
+				? $manager->decodeDataUri($this->avatar)->resize(800, 800)->encodeUsingFormat(\Intervention\Image\Format::PNG)
+				: $manager->read($this->avatar, \Intervention\Image\Decoders\DataUriImageDecoder::class)->resize(800, 800)->toPng();
+			\Illuminate\Support\Facades\Storage::disk('public')->put($path, $image);
 			$user->avatar = $path;
 			$user->save();
 			// Only remove uploads, and not one another user still points at (old username-based names)
