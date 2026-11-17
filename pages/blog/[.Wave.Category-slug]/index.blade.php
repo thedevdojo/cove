@@ -12,8 +12,8 @@
     <x-container>
         <div class="relative pt-10">
             <x-marketing.heading
-                title="{{ $category->name }} Articles"
-                description="Our latest {{ $category->name }} posts below."
+                :title="$category->name.' Articles'"
+                :description="'Our latest '.$category->name.' posts below.'"
                 align="left"
             />
             
